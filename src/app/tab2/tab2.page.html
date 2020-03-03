@@ -2,32 +2,25 @@
     <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-                <h4>Login Form</h4>
+                <h4>Register Form</h4>
             </div>
             <div padding>
                 <ion-item>
-                    <ion-input type="text" placeholder="Username"></ion-input>
+                    <ion-input type="text" placeholder="Usuario" [(ngModel)]="form.username"></ion-input>
                 </ion-item>
 
                 <ion-item>
-                    <ion-input type="password" placeholder="Password"></ion-input>
+                    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="form.password"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input type="text" placeholder="Username"></ion-input>
+                    <ion-input type="text" placeholder="Nombre" [(ngModel)]="form.name"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input type="text" placeholder="Username"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Username"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Username"></ion-input>
+                    <ion-input type="email" placeholder="Email" [(ngModel)]="form.email"></ion-input>
                 </ion-item>
             </div>
-
             <div padding>
-                <ion-button size="large" href="/touchid" expand="block">Login</ion-button>
+                <ion-button size="large" expand="block" (click)="onSubmit()">Login</ion-button>
             </div>
         </ion-col>
     </ion-row>

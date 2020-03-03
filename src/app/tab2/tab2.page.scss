@@ -1,3 +1,34 @@
 ion-content ion-toolbar {
-  --background: translucent;
+    --background: translucent;
+}
+
+$white-color: #fff;
+$height100: 100%;
+ion-grid {
+    width: 100%;
+    height: $height100;
+    background: #dfdfdf;
+    text-align: center;
+}
+
+ion-row {
+    height: $height100;
+}
+
+ion-col {
+    border: 1px solid #488aff;
+    background: $white-color;
+}
+
+ion-button {
+    font-weight: 300;
+}
+
+@media (min-width: 240px) and (max-width: 768px) {
+    ion-grid {
+        background: $white-color;
+    }
+    ion-col {
+        border: none;
+    }
 }
