@@ -11,14 +11,15 @@
             <ion-col>
                 <ion-list>
                     <ion-item-sliding #slidingItem *ngFor="let pelicula of peliculas">
-                        <ion-item detail>
+                        <ion-item detail [routerLink]="['/cartelera', pelicula.titulo, 'comentarios']" routerLinkActive="router-link-active">
+                            <ion-img [src]="pelicula.poster"></ion-img>
                             <ion-label>
                                 <h4>{{ pelicula.titulo }}</h4>
                                 <p>{{ pelicula.director }}</p>
                             </ion-label>
                         </ion-item>
                         <ion-item-options>
-                            <ion-item-option [routerLink]="['/cartelera', pelicula.titulo, 'comentarios']" routerLinkActive="router-link-active">
+                            <ion-item-option>
                                 <ion-icon slot="icon-only" name="create"></ion-icon>
                             </ion-item-option>
                             <ion-item-option class="borrar" (click)="deleteProyecto(proyecto.id, slidingItem)">

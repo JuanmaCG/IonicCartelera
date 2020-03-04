@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PeliculasService } from '../peliculas.service';
+import { Pelicula } from '../pelicula';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-movie',
@@ -7,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateMovieComponent implements OnInit {
 
-  constructor() { }
+  pelicula: Pelicula = new Pelicula();
+
+  constructor(private peliculaService: PeliculasService, private router:Router) { }
 
   ngOnInit() {}
+
+  addPelicula() {
+    this.peliculaService.createMovie(this.pelicula).subscribe( () => this.router.navigate(['/tabs/cartelera']))
+  }
 
 }

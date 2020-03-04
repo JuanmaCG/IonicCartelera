@@ -22,7 +22,10 @@ export class Tab3Page implements OnInit{
       username: this.token.getUsername(),
       authorities: this.token.getAuthorities()
     };
-    this.peliculaService.cargaPeliculas().subscribe((data) => this.peliculas = data)
+    this.peliculaService.cargaPeliculas().subscribe((data) => {
+      this.peliculas = data
+    })
+
   }
 
   logout() {

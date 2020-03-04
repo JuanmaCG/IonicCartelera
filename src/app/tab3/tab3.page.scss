@@ -1,3 +1,13 @@
 ion-content ion-toolbar {
-  --background: translucent;
+    --background: translucent;
+}
+
+ion-img {
+    width: 100px;
+    height: 100px;
+}
+
+ion-button {
+    font-weight: 100;
+    margin-right: 10px;
 }

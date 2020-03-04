@@ -1,3 +1,41 @@
-<p>
-  create-movie works!
-</p>
+<ion-header>
+    <ion-toolbar class="header">
+        <ion-title>Creacion de Peliculas</ion-title>
+        <ion-button color="warning" slot="end" [routerLink]="['/tabs/cartelera']">Cartelera</ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-grid justify-content-center>
+    <ion-row>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+                <h3>Create Movie</h3>
+            </div>
+            <div padding>
+                <ion-item>
+                    <ion-input type="text" placeholder="Titulo" [(ngModel)]="pelicula.titulo"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Director" [(ngModel)]="pelicula.director"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Argumento" [(ngModel)]="pelicula.argumento"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Poster-Url" [(ngModel)]="pelicula.poster"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Fecha Estreno" [(ngModel)]="pelicula.fecha"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Rating" [(ngModel)]="pelicula.rating"></ion-input>
+                </ion-item>
+            </div>
+            <div padding>
+                <ion-button size="large" expand="block" (click)="addPelicula()">Crear</ion-button>
+            </div>
+        </ion-col>
+    </ion-row>
+
+
+</ion-grid>

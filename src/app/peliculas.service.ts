@@ -22,4 +22,12 @@ export class PeliculasService {
   public cargaPeliculas(): Observable<Pelicula[]> {
     return this.http.get<Pelicula[]>(this.peliculasUrls, this.httpOptions);
   }
+
+  public createMovie(pelicula: Pelicula) {
+    return this.http.post(this.peliculasUrls, pelicula, this.httpOptions);
+  }
+
+  public getPeliculaByTitulo(titulo: string): Observable<Pelicula> {
+    return this.http.get<Pelicula>(`${this.peliculasUrls}/${titulo}`, this.httpOptions )
+  }
 }

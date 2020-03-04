@@ -6,17 +6,21 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
+import { ModalComentarioComponent } from './modal-comentario/modal-comentario.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent, CreateMovieComponent, ComentariosComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, CreateMovieComponent, ComentariosComponent, ModalComentarioComponent],
+  entryComponents: [ModalComentarioComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
+    DatePipe,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
