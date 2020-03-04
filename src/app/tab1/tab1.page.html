@@ -1,22 +1,29 @@
-<ion-grid>
-    <ion-row justify-content-center>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div text-center>
-                <h4>Login Form</h4>
-            </div>
-            <div padding>
-                <ion-item>
-                    <ion-input type="text" placeholder="Username" [(ngModel)]="form.username"></ion-input>
-                </ion-item>
+<ion-content>
+    <ion-grid>
+        <ion-row justify-content-center>
+            <ion-col align-self-center>
+                <div text-center>
+                    <h4>Login Form</h4>
+                </div>
+                <form padding [formGroup]="formLogin">
+                    <ion-item>
+                        <ion-input placeholder="Username" [(ngModel)]="form.username" color="{{ formLogin.controls.username.errors && formLogin.controls.username.dirty ? 'danger' : 'primary' }}" formControlName="username" type="text" name="username"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="formLogin.controls.username.invalid && (formLogin.controls.username.touched || formLogin.controls.username.dirty)" color="danger">
+                        <div>El Usuario es obligatorio</div>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input color="{{ formLogin.controls.password.errors && formLogin.controls.password.dirty ? 'danger' : 'primary' }}" formControlName="password" name="password" type="password" placeholder="Password" [(ngModel)]="form.password"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="formLogin.controls.password.invalid && (formLogin.controls.password.touched || formLogin.controls.password.dirty)" color="danger">
+                        <ion-label>La contraseña es obligatoria</ion-label>
+                    </ion-item>
+                </form>
 
-                <ion-item>
-                    <ion-input type="password" placeholder="Password" [(ngModel)]="form.password"></ion-input>
-                </ion-item>
-            </div>
-
-            <div padding>
-                <ion-button size="large" routerLinkActive="router-link-active" expand="block" (click)="onSubmit()">Login</ion-button>
-            </div>
-        </ion-col>
-    </ion-row>
-</ion-grid>
+                <div padding>
+                    <ion-button size="large" routerLinkActive="router-link-active" expand="block" (click)="onSubmit()" [disabled]="!formLogin.valid">Login</ion-button>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

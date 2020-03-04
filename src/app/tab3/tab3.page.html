@@ -19,23 +19,20 @@
                             </ion-label>
                         </ion-item>
                         <ion-item-options>
-                            <ion-item-option>
+                            <ion-item-option *ngIf="info.authorities == 'ROLE_ADMIN'" [routerLink]="['/cartelera', pelicula.titulo, 'edit']">
                                 <ion-icon slot="icon-only" name="create"></ion-icon>
                             </ion-item-option>
-                            <ion-item-option class="borrar" (click)="deleteProyecto(proyecto.id, slidingItem)">
+                            <ion-item-option color="danger" *ngIf="info.authorities == 'ROLE_ADMIN'" class="borrar" (click)="deletePelicula(pelicula.titulo, slidingItem)">
                                 <ion-icon slot="icon-only" name="trash"></ion-icon>
                             </ion-item-option>
                         </ion-item-options>
                     </ion-item-sliding>
-                    <!-- <div padding>
-                        <ion-button [routerLink]="['create']" size="large" type="submit" expand="block">Crear Proyecto</ion-button>
-                    </div> -->
                 </ion-list>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-toolbar class="header">
-                <ion-button color="success" slot="end" [routerLink]="['/creacion']" routerLinkActive="router-link-active">Crear</ion-button>
+                <ion-button *ngIf="info.authorities == 'ROLE_ADMIN'" color="success" slot="end" [routerLink]="['/creacion']" routerLinkActive="router-link-active">Crear</ion-button>
             </ion-toolbar>
         </ion-row>
     </ion-grid>

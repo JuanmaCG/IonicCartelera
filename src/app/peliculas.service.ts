@@ -28,6 +28,14 @@ export class PeliculasService {
   }
 
   public getPeliculaByTitulo(titulo: string): Observable<Pelicula> {
-    return this.http.get<Pelicula>(`${this.peliculasUrls}/${titulo}`, this.httpOptions )
+    return this.http.get<Pelicula>(`${this.peliculasUrls}/${titulo}`, this.httpOptions);
+  }
+
+  public deletePelicula(titulo: string){
+    return this.http.delete(`${this.peliculasUrls}/${titulo}`, this.httpOptions);
+  }
+
+  updatePelicula(titulo: string, pelicula: Pelicula) {
+    return this.http.put(`${this.peliculasUrls}/${titulo}`, pelicula, this.httpOptions);
   }
 }

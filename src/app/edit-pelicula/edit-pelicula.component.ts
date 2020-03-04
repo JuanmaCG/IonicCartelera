@@ -1,20 +1,21 @@
 import { Component, OnInit } from "@angular/core";
 import { PeliculasService } from "../peliculas.service";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Pelicula } from "../pelicula";
-import { Router } from "@angular/router";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
 import { ToastController } from "@ionic/angular";
 
 @Component({
-  selector: "app-create-movie",
-  templateUrl: "./create-movie.component.html",
-  styleUrls: ["./create-movie.component.scss"]
+  selector: "app-edit-pelicula",
+  templateUrl: "./edit-pelicula.component.html",
+  styleUrls: ["./edit-pelicula.component.scss"]
 })
-export class CreateMovieComponent implements OnInit {
+export class EditPeliculaComponent implements OnInit {
   form: FormGroup;
   pelicula: Pelicula = new Pelicula();
 
   constructor(
+    private route: ActivatedRoute,
     private peliculaService: PeliculasService,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -22,6 +23,9 @@ export class CreateMovieComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.peliculaService
+      .getPeliculaByTitulo(this.route.snapshot.params["titulo"])
+      .subscribe(data => (this.pelicula = data));
     this.form = this.formBuilder.group({
       titulo: ["", [Validators.required]],
       argumento: ["", [Validators.required, Validators.maxLength(200)]],
@@ -43,19 +47,24 @@ export class CreateMovieComponent implements OnInit {
     });
   }
 
-  addPelicula() {
+  updatePelicula() {
     this.peliculaService
-      .createMovie(this.pelicula)
-      .subscribe(() => this.router.navigate(["/tabs/cartelera"]));
+      .updatePelicula(this.pelicula.titulo, this.pelicula)
+      .subscribe();
     this.toastController
       .create({
         animated: true,
         duration: 2000,
         position: "bottom",
-        message: "Pelicula creada con exito"
+        message: "Pelicula editada con exito"
       })
       .then(toastEl => {
         toastEl.present();
       });
+    setTimeout(() => {
+      this.router
+        .navigate(["/tabs/cartelera"])
+        .then(() => window.location.reload());
+    }, 2000);
   }
 }

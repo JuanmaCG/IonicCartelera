@@ -14,11 +14,13 @@ import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { ComentariosComponent } from './comentarios/comentarios.component';
 import { ModalComentarioComponent } from './modal-comentario/modal-comentario.component';
 import { DatePipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EditPeliculaComponent } from './edit-pelicula/edit-pelicula.component';
 
 @NgModule({
-  declarations: [AppComponent, CreateMovieComponent, ComentariosComponent, ModalComentarioComponent],
+  declarations: [AppComponent, CreateMovieComponent, ComentariosComponent, ModalComentarioComponent, EditPeliculaComponent],
   entryComponents: [ModalComentarioComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [
     DatePipe,
     StatusBar,

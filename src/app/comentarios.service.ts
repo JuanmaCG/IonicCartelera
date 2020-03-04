@@ -13,17 +13,21 @@ export class ComentariosService {
 
   constructor(private http: HttpClient, private token: TokenStorageService) { }
 
-  headersObject = new HttpHeaders().append('Authorization', 'Bearer ' + this.token.getToken())
+  headersObject = new HttpHeaders().append('Authorization', 'Bearer ' + this.token.getToken());
 
   httpOptions = {
     headers: this.headersObject
   };
 
-  public getComentarios(titulo: string): Observable<Comentario> {
-    return this.http.get<Comentario>(`${this.comentarioUrls}/${titulo}/comentarios`, this.httpOptions);
+  public getComentarios(titulo: string): Observable<Comentario[]> {
+    return this.http.get<Comentario[]>(`${this.comentarioUrls}/${titulo}/comentarios`, this.httpOptions);
   }
 
   public addComentario(comentario: Comentario, titulo: string) {
     return this.http.post(`${this.comentarioUrls}/${titulo}/comentarios`, comentario, this.httpOptions)
+  }
+
+  public deleteComentario(id: number, titulo: string) {
+    return this.http.delete(`${this.comentarioUrls}/${titulo}/comentarios/${id}`, this.httpOptions);
   }
 }

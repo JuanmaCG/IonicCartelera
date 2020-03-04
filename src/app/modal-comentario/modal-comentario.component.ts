@@ -1,48 +1,47 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavParams, ToastController } from '@ionic/angular';
 import { Pelicula } from '../pelicula';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { ComentariosService } from '../comentarios.service';
 import { Comentario } from '../comentario';
 import { formatDate } from '@angular/common';
-
+import { ComentariosComponent } from '../comentarios/comentarios.component';
 
 @Component({
   selector: 'app-modal-comentario',
   templateUrl: './modal-comentario.component.html',
-  styleUrls: ['./modal-comentario.component.scss'],
+  styleUrls: ['./modal-comentario.component.scss']
 })
 export class ModalComentarioComponent implements OnInit {
+  titulo: string;
 
-  @Input() titulo: string;
-
-  constructor(private modalController: ModalController, private token: TokenStorageService, private comentarioService: ComentariosService) {
-    this.comentario = new Comentario()
+  constructor(
+    private modalController: ModalController,
+    private token: TokenStorageService,
+    private comentarioService: ComentariosService,
+    private navParams: NavParams,
+  ) {
+    this.comentario = new Comentario();
     this.comentario.fecha = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-    console.log(this.titulo);
-    
+    this.titulo = this.navParams.get('titulo');
     this.comentario.pelicula.titulo = this.titulo;
     this.comentario.username = this.token.getUsername();
   }
 
-  comentario: Comentario
+  comentario: Comentario;
 
-  ngOnInit() { }
-
+  ngOnInit() {}
 
   dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
     this.modalController.dismiss({
-      'dismissed': true
+      dismissed: true
     });
   }
 
   addComentario() {
-    console.log(this.comentario);
-
-    // this.comentarioService.addComentario(this.comentario, this.titulo).subscribe( () => this.dismiss())
+    this.comentarioService.addComentario(this.comentario, this.titulo).subscribe( () => {
+      this.dismiss();
+      window.location.reload();
+    });
   }
-
-
 }

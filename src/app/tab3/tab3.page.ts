@@ -20,12 +20,16 @@ export class Tab3Page implements OnInit{
     this.info = {
       token: this.token.getToken(),
       username: this.token.getUsername(),
-      authorities: this.token.getAuthorities()
+      authorities: this.token.getAuthorities(),
     };
     this.peliculaService.cargaPeliculas().subscribe((data) => {
-      this.peliculas = data
+      this.peliculas = data;
     })
 
+  }
+
+  deletePelicula(titulo: string) {
+    this.peliculaService.deletePelicula(titulo).subscribe(() => this.ngOnInit())
   }
 
   logout() {

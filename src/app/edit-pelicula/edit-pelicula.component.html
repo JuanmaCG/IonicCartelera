@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar class="header">
+        <ion-title>Edicion de Peliculas</ion-title>
+        <ion-button color="warning" slot="end" [routerLink]="['/tabs/cartelera']">Cartelera</ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-grid justify-content-center>
+    <ion-row>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+                <h5>Editar Pelicula</h5>
+            </div>
+            <!-- <div padding>
+                <ion-item>
+                    <ion-input type="text" placeholder="Titulo" [(ngModel)]="pelicula.titulo" readOnly>
+                        <ion-label color="danger">Titulo: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Director" [(ngModel)]="pelicula.director">
+                        <ion-label color="danger">Director: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Argumento" [(ngModel)]="pelicula.argumento">
+                        <ion-label color="danger">Argumento: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Poster-Url" [(ngModel)]="pelicula.poster">
+                        <ion-label color="danger">PosterUrl: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Fecha Estreno" [(ngModel)]="pelicula.fecha">
+                        <ion-label color="danger">Fecha Estreno: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Rating" [(ngModel)]="pelicula.rating">
+                        <ion-label color="danger">Rating: </ion-label>
+                    </ion-input>
+                </ion-item>
+            </div> -->
+            <form padding [formGroup]="form">
+                <ion-item>
+                    <ion-input readOnly type="text" placeholder="Titulo" [(ngModel)]="pelicula.titulo" color="{{ form.controls.titulo.errors && form.controls.titulo.dirty ? 'danger' : 'primary' }}" formControlName="titulo" name="titulo">
+                        <ion-label color="danger">Titulo: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.titulo.invalid && (form.controls.titulo.touched || form.controls.titulo.dirty)" color="danger">
+                    <ion-label>El titulo es obligatorio</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Director" [(ngModel)]="pelicula.director" color="{{ form.controls.director.errors && form.controls.director.dirty ? 'danger' : 'primary' }}" formControlName="director" name="director">
+                        <ion-label color="danger">Director: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.director.invalid && (form.controls.director.touched || form.controls.director.dirty)" color="danger">
+                    <ion-label>El director es obligatorio</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Argumento" [(ngModel)]="pelicula.argumento" color="{{ form.controls.argumento.errors && form.controls.argumento.dirty ? 'danger' : 'primary' }}" formControlName="argumento" name="argumento">
+                        <ion-label color="danger">Argumento: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.argumento.invalid && (form.controls.argumento.touched || form.controls.argumento.dirty)" color="danger">
+                    <ion-label>200 caracteres maximo</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Poster-Url" [(ngModel)]="pelicula.poster" color="{{ form.controls.poster.errors && form.controls.poster.dirty ? 'danger' : 'primary' }}" formControlName="poster" name="poster">
+                        <ion-label color="danger">PosterUrl: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.poster.invalid && (form.controls.poster.touched || form.controls.poster.dirty)" color="danger">
+                    <ion-label>Debe ser un .png o .jpg</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="text" placeholder="Fecha Estreno" [(ngModel)]="pelicula.fecha" color="{{ form.controls.fecha.errors && form.controls.fecha.dirty ? 'danger' : 'primary' }}" formControlName="fecha" name="fecha">
+                        <ion-label color="danger">Fecha Estreno: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.fecha.invalid && (form.controls.fecha.touched || form.controls.fecha.dirty)" color="danger">
+                    <ion-label>Formato: YYYY-MM-DD</ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-input type="number" placeholder="Rating" [(ngModel)]="pelicula.rating" color="{{ form.controls.rating.errors && form.controls.rating.dirty ? 'danger' : 'primary' }}" formControlName="rating" name="rating">
+                        <ion-label color="danger">Rating: </ion-label>
+                    </ion-input>
+                </ion-item>
+                <ion-item *ngIf="form.controls.rating.invalid && (form.controls.rating.touched || form.controls.rating.dirty)" color="danger">
+                    <ion-label>Entre 0-10</ion-label>
+                </ion-item>
+            </form>
+            <div padding>
+                <ion-button size="large" expand="block" (click)="updatePelicula()">Editar</ion-button>
+            </div>
+        </ion-col>
+    </ion-row>
+
+
+</ion-grid>
