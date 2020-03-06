@@ -3,7 +3,7 @@ $height100: 100%;
 ion-grid {
     width: 100%;
     height: $height100;
-    background: #dfdfdf;
+    // background: #dfdfdf;
     text-align: center;
 }
 
@@ -14,11 +14,16 @@ ion-row {
 ion-col {
     border: 1px solid #488aff;
     background: $white-color;
+    background: url('../../assets/image/cinema-background-with-movie-objects_1823382.jpg') no-repeat center center/cover;
 }
 
 ion-button {
     font-weight: 100px;
     margin-right: 10px;
+}
+
+h3 {
+    color: white
 }
 
 @media (min-width: 240px) and (max-width: 768px) {

@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar class="header">
+    <ion-toolbar class="header" color="tertiary">
         <ion-title>Comentarios</ion-title>
         <ion-button color="warning" slot="end" [routerLink]="['/tabs/cartelera']">Cartelera</ion-button>
         <ion-button color="success" slot="start" (click)="presentModal()">
@@ -33,13 +33,16 @@
     </ion-grid>
     <ion-card *ngFor="let comentario of comentarios">
         <ion-item>
-            <ion-label color="danger">{{usuario}} comenta: </ion-label>
+            <ion-label color="danger">{{comentario.username}} comenta: </ion-label>
         </ion-item>
         <ion-card-content>
             {{comentario.comentario}}
             <ion-button color="danger" *ngIf="usuario === comentario.username" (click)="deleteComentario(comentario.id, pelicula.titulo)">
                 <ion-icon name="trash"></ion-icon>
             </ion-button>
+            <ion-card-subtitle color="success">Puntuacion: {{comentario.userRating}}
+                <ion-icon name="star"></ion-icon>
+            </ion-card-subtitle>
         </ion-card-content>
     </ion-card>
 </ion-content>

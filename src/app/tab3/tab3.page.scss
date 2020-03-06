@@ -1,5 +1,6 @@
-ion-content ion-toolbar {
+ion-content {
     --background: translucent;
+    --background: url('../../assets/image/cinema-background-with-movie-objects_1823382.jpg') no-repeat center center/cover;
 }
 
 ion-img {
@@ -10,4 +11,8 @@ ion-img {
 ion-button {
     font-weight: 100;
     margin-right: 10px;
+}
+
+ion-toolbar {
+    --background: transparent;
 }

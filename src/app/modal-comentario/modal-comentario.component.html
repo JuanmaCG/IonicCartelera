@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar class="header">
+    <ion-toolbar class="header" color="tertiary">
         <ion-title>Comentarios</ion-title>
         <ion-button color="warning" slot="end" (click)="dismiss()">Salir</ion-button>
     </ion-toolbar>
@@ -8,9 +8,7 @@
 <ion-grid justify-content-center>
     <ion-row>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <div text-center>
-                <h3>Nuevo Comentario</h3>
-            </div>
+            <h3>Nuevo Comentario</h3>
             <div padding>
                 <ion-item>
                     <ion-input type="text" placeholder="Comentario" [(ngModel)]="comentario.comentario"></ion-input>

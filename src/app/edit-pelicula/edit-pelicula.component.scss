@@ -14,6 +14,11 @@ ion-row {
 ion-col {
     border: 1px solid #488aff;
     background: $white-color;
+    background: url('../../assets/image/cinema-background-with-movie-objects_1823382.jpg') no-repeat center center/cover;
+}
+
+h3 {
+    color: white;
 }
 
 ion-button {

@@ -2,18 +2,18 @@
 
     <ion-tab-bar slot="bottom">
         <ion-tab-button tab="login" *ngIf="info.token == null">
-            <ion-icon name="triangle"></ion-icon>
+            <ion-icon color="success" name="log-in-outline"></ion-icon>
             <ion-label>Login</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="registro" *ngIf="info.token == null">
-            <ion-icon name="ellipse"></ion-icon>
+            <ion-icon color="danger" name="log-out-outline"></ion-icon>
             <ion-label>Registro</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="cartelera" *ngIf="info.token !== null">
-            <ion-icon name="square"></ion-icon>
-            <ion-label>Cartelera</ion-label>
+            <ion-icon name="videocam-outline"></ion-icon>
+            <ion-label color="tertiary">Cartelera</ion-label>
         </ion-tab-button>
 
     </ion-tab-bar>

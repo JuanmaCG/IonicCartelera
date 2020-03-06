@@ -4,6 +4,31 @@ ion-button {
     margin-left: 10px;
 }
 
+$white-color: #fff;
+$height100: 100%;
 ion-title {
     text-align: center;
+    margin-left: 10%;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+}
+
+ion-grid {
+    width: 100%;
+    height: $height100;
+    // background: #dfdfdf;
+    text-align: center;
+}
+
+ion-row {
+    height: $height100;
+}
+
+ion-col {
+    border: 1px solid #488aff;
+    background: $white-color;
+    background: url('../../assets/image/cinema-background-with-movie-objects_1823382.jpg') no-repeat center center/cover;
 }

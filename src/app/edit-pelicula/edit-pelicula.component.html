@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-toolbar class="header">
+    <ion-toolbar class="header" color="tertiary">
         <ion-title>Edicion de Peliculas</ion-title>
         <ion-button color="warning" slot="end" [routerLink]="['/tabs/cartelera']">Cartelera</ion-button>
     </ion-toolbar>
@@ -9,40 +9,8 @@
     <ion-row>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <div text-center>
-                <h5>Editar Pelicula</h5>
+                <h3>Editar Pelicula</h3>
             </div>
-            <!-- <div padding>
-                <ion-item>
-                    <ion-input type="text" placeholder="Titulo" [(ngModel)]="pelicula.titulo" readOnly>
-                        <ion-label color="danger">Titulo: </ion-label>
-                    </ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Director" [(ngModel)]="pelicula.director">
-                        <ion-label color="danger">Director: </ion-label>
-                    </ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Argumento" [(ngModel)]="pelicula.argumento">
-                        <ion-label color="danger">Argumento: </ion-label>
-                    </ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Poster-Url" [(ngModel)]="pelicula.poster">
-                        <ion-label color="danger">PosterUrl: </ion-label>
-                    </ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="text" placeholder="Fecha Estreno" [(ngModel)]="pelicula.fecha">
-                        <ion-label color="danger">Fecha Estreno: </ion-label>
-                    </ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input type="number" placeholder="Rating" [(ngModel)]="pelicula.rating">
-                        <ion-label color="danger">Rating: </ion-label>
-                    </ion-input>
-                </ion-item>
-            </div> -->
             <form padding [formGroup]="form">
                 <ion-item>
                     <ion-input readOnly type="text" placeholder="Titulo" [(ngModel)]="pelicula.titulo" color="{{ form.controls.titulo.errors && form.controls.titulo.dirty ? 'danger' : 'primary' }}" formControlName="titulo" name="titulo">
